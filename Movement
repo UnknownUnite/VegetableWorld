@@ -1,0 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Movement : MonoBehaviour
+{
+    public Rigidbody2D rb;
+    public Joystick joystick;
+    public int Speed = 4;
+
+    Vector2 Move;
+
+    // Update is called once per frame
+    void Update()
+    {
+        Move.x = joystick.Horizontal;
+        Move.y = joystick.Vertical;
+    }
+
+    private void FixedUpdate()
+    {
+        rb.MovePosition(rb.position + Move * Speed * Time.fixedDeltaTime);
+    }
+
+}
